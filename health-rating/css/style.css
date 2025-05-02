@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f8ff;
+    color: #333;
+  }
+  
+  header {
+    background-color: #4CAF50;
+    padding: 1em;
+    text-align: center;
+    color: white;
+  }
+  
+  nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  main {
+    padding: 2em;
+  }
+  
+  /* Иконки */
+  nav i {
+    margin-right: 5px;
+  }
+  
+  /* Таблица */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+  }
+  
+  table, th, td {
+    border: 1px solid #ccc;
+  }
+  
+  th, td {
+    padding: 0.8em;
+    text-align: left;
+  }
+  
+  /* Фильтр */
+  label, select {
+    margin-bottom: 1em;
+    display: inline-block;
+  }
+  
+  /* Карточки стран */
+  .country-card {
+    background-color: #e8f5e9;
+    border-left: 4px solid #4CAF50;
+    padding: 1em;
+    margin-bottom: 1.5em;
+    border-radius: 5px;
+  }
+  
+  .country-card h3 {
+    color: #2e7d32;
+  }
+  
+  /* Карта заболеваемости */
+  .map-placeholder {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 1em;
+    margin-top: 1em;
+    text-align: center;
+    font-style: italic;
+    color: #666;
+  }
+  
+  /* Советы по здоровью */
+  .health-tips ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .health-tips li::before {
+    content: "✅";
+    margin-right: 0.5em;
+  }
+  
+  /* FAQ */
+  details {
+    margin-bottom: 1em;
+    padding: 0.5em;
+    background-color: #e8f5e9;
+    border-left: 4px solid #4CAF50;
+    border-radius: 5px;
+  }
+  
+  summary {
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  /* Навигационные ссылки */
+  .navigation a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .navigation a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Футер */
+  footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
