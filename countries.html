@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="css/style.css">
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Font Awesome (для иконок) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <header>
@@ -16,6 +18,10 @@
       <a href="index.html">Главная</a>
       <a href="countries.html">Рейтинг стран</a>
       <a href="analysis.html">Анализ данных</a>
+      <!-- Кнопка переключения темы -->
+    <button id="theme-toggle" class="theme-button">
+      <i class="fas fa-moon"></i>
+    </button>
     </nav>
   </header>
 
@@ -72,4 +78,6 @@
   </footer>
   <script src="js/data.js"></script>
 </body>
+<!-- В конец body -->
+<script src="js/theme.js"></script>
 </html>

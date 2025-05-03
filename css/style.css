@@ -1,24 +1,70 @@
-/* Общие стили */
+/* Основные переменные для светлой темы */
+:root {
+  --bg-color: #f5f8ff;
+  --text-color: #333;
+  --card-bg: #e8f5e9;
+  --header-bg: #4CAF50;
+  --footer-bg: #4CAF50;
+  --link-color: #4CAF50;
+  --legend-bg: white;
+  --legend-text: #333;
+  --chart-bg: #e0f2f1;
+  --chart-color: #4CAF50;
+  --flag-table-size: 20px;
+  --flag-card-size: 100px;
+  --flag-card-hover-scale: 1.1;
+  --flag-table-hover-scale: 1.05;
+  --border-radius: 8px;
+  --shadow-light: 0 2px 6px rgba(0, 0, 0, 0.05);
+  --shadow-dark: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Переменные для тёмной темы */
+.dark {
+  --bg-color: #1e1e1e;
+  --text-color: #f5f5f5;
+  --card-bg: #2e2e2e;
+  --header-bg: #1a1a1a;
+  --footer-bg: #1a1a1a;
+  --link-color: #64ffda;
+  --legend-bg: #2e2e2e;
+  --legend-text: #ccc;
+  --chart-bg: #2e2e2e;
+  --chart-color: #64ffda;
+  --flag-table-size: 18px;
+  --flag-card-size: 90px;
+  --flag-card-hover-scale: 1.1;
+  --flag-table-hover-scale: 1.05;
+  --border-radius: 8px;
+  --shadow-light: 0 2px 6px rgba(255, 255, 255, 0.05);
+  --shadow-dark: 0 2px 6px rgba(255, 255, 255, 0.1);
+}
+
+/* Общие стили для body */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f5f8ff;
-  color: #333;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Стили для header */
 header {
-  background-color: #4CAF50;
+  background-color: var(--header-bg);
   padding: 1.5em;
   text-align: center;
   color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
 
+/* Стили для навигации */
 nav a {
   color: white;
   margin: 0 1em;
@@ -31,65 +77,27 @@ nav a:hover {
   color: #e8f5e9;
 }
 
+/* Основная область контента */
 main {
   flex: 1 0 auto;
   padding: 2em;
   max-width: 1200px;
   margin: 0 auto;
+  transition: background-color 0.3s ease;
 }
 
+/* Стили для footer */
 footer {
-  background-color: #4CAF50;
+  background-color: var(--footer-bg);
   color: white;
   text-align: center;
   padding: 1em;
   position: relative;
   width: 100%;
-}
-/* Адаптивность для экранов до 768px (планшеты и смартфоны) */
-@media (max-width: 768px) {
-  /* Флаги в таблице */
-  .country-flag-table {
-    width: 15px; /* Уменьшенный размер */
-    height: auto;
-  }
-
-  /* Флаги в карточках */
-  .country-card img.country-image {
-    width: 80px; /* Уменьшено для мобильных устройств */
-    height: auto;
-    margin-bottom: 0.8em;
-  }
-
-  /* Адаптация карточек */
-  .country-card {
-    padding: 0.8em;
-    margin-bottom: 1.2em;
-    border-radius: 6px;
-  }
-
-  /* Адаптация таблицы */
-  table {
-    font-size: 0.9em;
-  }
-
-  th, td {
-    padding: 0.6em;
-  }
-
-  /* Адаптация карты */
-  #disease-map {
-    height: 300px; /* Меньше высота карты */
-  }
-
-  /* Адаптация легенды */
-  .legend {
-    max-width: 100px;
-    font-size: 0.9em;
-  }
+  transition: background-color 0.3s ease;
 }
 
-/* Ключевые факты */
+/* Секция с ключевыми фактами */
 .key-facts ul {
   list-style: none;
   padding-left: 0;
@@ -101,82 +109,65 @@ footer {
   padding: 0.5em 1em;
   border-left: 4px solid #4CAF50;
   border-radius: 4px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-light);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dark .key-facts li {
+  background-color: var(--card-bg);
+  border-left-color: var(--link-color);
+  color: var(--text-color);
+  box-shadow: var(--shadow-dark);
 }
 
 /* Карточки стран */
 .country-card {
-  background-color: #e8f5e9;
-  border-left: 4px solid #4CAF50;
+  background-color: var(--card-bg);
+  border-left: 4px solid var(--link-color);
   padding: 1em;
   margin-bottom: 1.5em;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .country-card h3 {
-  color: #2e7d32;
+  color: var(--link-color);
   margin-top: 0;
 }
 
 .country-card:hover {
   transform: scale(1.01);
+  box-shadow: var(--shadow-dark);
 }
 
-/* Флаги стран */
-.country-image {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 1em;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.dark .country-card {
+  background-color: var(--card-bg);
+  border-left-color: var(--link-color);
+  color: var(--text-color);
 }
-/* Анимация для флагов в карточках */
+
+.dark .country-card h3 {
+  color: var(--link-color);
+}
+
+/* Флаги в карточках */
 .country-card img.country-image {
-  width: 100px;
+  width: var(--flag-card-size);
   height: auto;
-  border-radius: 4px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+  margin-bottom: 1em;
+  box-shadow: var(--shadow-light);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .country-card img.country-image:hover {
-  transform: scale(1.1); /* Увеличение на 10% при наведении */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Усиленная тень */
-}
-/* Анимация для карточек стран */
-.country-card {
-  background-color: #e8f5e9;
-  border-left: 4px solid #4CAF50;
-  padding: 1em;
-  margin-bottom: 1.5em;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: scale(var(--flag-card-hover-scale));
+  box-shadow: var(--shadow-dark);
 }
 
-.country-card:hover {
-  transform: scale(1.02); /* Увеличение на 2% */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Более заметная тень */
-}
-
-/* Стили для флагов в таблице */
-.country-flag-table {
-  width: 20px;          /* Ширина флага */
-  height: auto;        /* Сохраняет пропорции */
-  vertical-align: middle;
-  margin-right: 5px;
-  border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
-  .country-flag-table {
-    width: 15px;
-  }
+.dark .country-card img.country-image {
+  box-shadow: var(--shadow-dark);
 }
 
 /* Советы по здоровью */
@@ -188,18 +179,27 @@ footer {
 .health-tips li::before {
   content: "✅";
   margin-right: 10px;
+  color: var(--link-color);
 }
 
 .health-tips li {
   background: #fff;
   padding: 0.8em;
   margin-bottom: 0.5em;
-  border-left: 4px solid #4CAF50;
+  border-left: 4px solid var(--link-color);
   border-radius: 4px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* FAQ */
+.dark .health-tips li {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-left-color: var(--link-color);
+  box-shadow: var(--shadow-dark);
+}
+
+/* Секция FAQ */
 .faq {
   margin-top: 2em;
 }
@@ -214,7 +214,15 @@ footer {
   margin-bottom: 0.5em;
   border-left: 4px solid #4CAF50;
   border-radius: 4px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-light);
+  transition: background-color 0.3s ease;
+}
+
+.dark .faq details {
+  background: var(--card-bg);
+  border-left-color: var(--link-color);
+  color: var(--text-color);
+  box-shadow: var(--shadow-dark);
 }
 
 .faq summary {
@@ -222,7 +230,7 @@ footer {
   cursor: pointer;
 }
 
-/* Навигация */
+/* Стили для навигации внизу */
 .navigation ul {
   list-style: none;
   padding-left: 0;
@@ -233,7 +241,7 @@ footer {
 }
 
 .navigation a {
-  color: #4CAF50;
+  color: var(--link-color);
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
@@ -243,22 +251,30 @@ footer {
   text-decoration: underline;
 }
 
-/* Стили для карты */
+/* Стили для карты заболеваемости */
 #disease-map {
   height: 500px;
   margin-top: 1em;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
 }
 
+/* Легенда карты */
 .legend {
-  background: white;
+  background: var(--legend-bg);
+  color: var(--legend-text);
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   margin-top: 1em;
   max-width: 200px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-light);
+}
+
+.dark .legend {
+  background: var(--legend-bg);
+  color: var(--legend-text);
+  border: 1px solid #444;
 }
 
 .legend-item {
@@ -275,28 +291,47 @@ footer {
   border-radius: 2px;
 }
 
-/* Таблица */
+/* Таблица рейтинга стран */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1em;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 table, th, td {
   border: 1px solid #ccc;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 th, td {
   padding: 0.8em;
   text-align: left;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 th {
   background-color: #e0f2f1;
+  transition: background-color 0.3s ease;
 }
 
-/* Фильтры */
+.dark table {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.dark th, .dark td {
+  border: 1px solid #444;
+  color: var(--text-color);
+  background-color: var(--card-bg);
+}
+
+.dark th {
+  background-color: #2e2e2e;
+}
+
+/* Фильтры на странице countries.html */
 .filters {
   margin-bottom: 1em;
 }
@@ -311,11 +346,18 @@ th {
   margin-right: 1em;
   border: 1px solid #ccc;
   border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
 /* Графики */
 canvas {
   margin-top: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.dark canvas {
+  background-color: var(--chart-bg);
+  color: var(--chart-color);
 }
 
 /* Статистика и источники */
@@ -333,9 +375,10 @@ canvas {
 }
 
 .sources a {
-  color: #4CAF50;
+  color: var(--link-color);
   text-decoration: none;
   font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .sources a:hover {
@@ -361,4 +404,1007 @@ canvas {
     margin-right: 0;
     margin-bottom: 0.5em;
   }
+
+  /* Адаптивность для флагов */
+  .country-flag-table {
+    width: var(--flag-table-size);
+    height: auto;
+  }
+
+  .country-card img.country-image {
+    width: var(--flag-card-size);
+    height: auto;
+  }
+
+  .country-card {
+    margin-bottom: 1.2em;
+    padding: 0.8em;
+  }
+
+  .country-card:hover {
+    transform: scale(1.01);
+  }
+
+  .country-card img.country-image:hover {
+    transform: scale(var(--flag-card-hover-scale));
+  }
+
+  .country-flag-table:hover {
+    transform: scale(var(--flag-table-hover-scale));
+  }
+
+  .legend {
+    max-width: 150px;
+  }
+
+  .legend-item span {
+    width: 15px;
+    height: 8px;
+  }
+
+  .health-tips li::before {
+    margin-right: 8px;
+  }
+
+  .health-tips li {
+    padding: 0.6em;
+  }
 }
+
+/* Стили для флагов в таблице */
+.country-flag-table {
+  width: var(--flag-table-size);
+  height: auto;
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-bottom: 0.5em;
+  border-radius: 2px;
+  box-shadow: var(--shadow-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.country-flag-table:hover {
+  transform: scale(var(--flag-table-hover-scale));
+  box-shadow: var(--shadow-dark);
+}
+
+.dark .country-flag-table {
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для кнопки переключения темы */
+.theme-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.theme-button:hover {
+  color: #e8f5e9;
+}
+
+.dark .theme-button {
+  color: #ccc;
+}
+
+.dark .theme-button:hover {
+  color: #f5f5f5;
+}
+
+/* Стили для иконок в таблице и карточках */
+.fas {
+  transition: color 0.3s ease;
+}
+
+.dark .fas {
+  color: var(--link-color);
+}
+
+/* Стили для графиков в тёмной теме */
+.dark .chart-section canvas {
+  background-color: var(--chart-bg);
+  color: var(--chart-color);
+}
+
+/* Стили для таблицы в тёмной теме */
+.dark table {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.dark th, .dark td {
+  border: 1px solid #444;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.dark th {
+  background-color: var(--card-bg);
+}
+
+/* Стили для FAQ в тёмной теме */
+.dark .faq details {
+  background-color: var(--card-bg);
+  border-left-color: var(--link-color);
+  box-shadow: var(--shadow-dark);
+  color: var(--text-color);
+}
+
+.dark .faq summary {
+  color: var(--text-color);
+}
+
+/* Стили для советов в тёмной теме */
+.dark .health-tips li {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-left-color: var(--link-color);
+  box-shadow: var(--shadow-dark);
+}
+
+.dark .health-tips li::before {
+  color: var(--link-color);
+}
+
+/* Стили для легенды в тёмной теме */
+.dark .legend {
+  background: var(--legend-bg);
+  color: var(--legend-text);
+  border: 1px solid #444;
+}
+
+.dark .legend-item span {
+  border-radius: 2px;
+}
+
+/* Стили для главной страницы */
+.intro {
+  background-color: var(--card-bg);
+  padding: 1em;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+}
+
+.dark .intro {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* Стили для таблицы рейтинга в тёмной теме */
+.dark #country-table {
+  background-color: var(--card-bg);
+}
+
+.dark #country-table th, .dark #country-table td {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid #444;
+}
+
+/* Стили для графиков в тёмной теме */
+.dark #healthChart, .dark #diseaseChart {
+  background-color: var(--chart-bg);
+  color: var(--chart-color);
+}
+
+/* Стили для раздела карты в тёмной теме */
+.dark #disease-map {
+  background-color: #1a1a1a;
+}
+
+/* Стили для карточек в тёмной теме */
+.dark .country-card {
+  background-color: var(--card-bg);
+  border-left-color: var(--link-color);
+  color: var(--text-color);
+}
+
+.dark .country-card h3 {
+  color: var(--link-color);
+}
+
+.dark .country-card:hover {
+  transform: scale(1.01);
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для ссылок в тёмной теме */
+.dark a {
+  color: var(--link-color);
+}
+
+.dark a:hover {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+/* Стили для кнопки переключения темы */
+.theme-button {
+  margin-left: 1em;
+}
+
+/* Стили для карточек в тёмной теме */
+.country-card {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark .country-card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* Стили для заголовков в тёмной теме */
+.dark h1, .dark h2, .dark h3, .dark h4 {
+  color: var(--text-color);
+}
+
+/* Стили для легенды в тёмной теме */
+.legend {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark .legend {
+  background-color: var(--legend-bg);
+  color: var(--legend-text);
+}
+
+/* Стили для графиков в тёмной теме */
+.dark .chart-section {
+  background-color: var(--chart-bg);
+  color: var(--chart-color);
+  border-radius: var(--border-radius);
+  padding: 1em;
+}
+
+/* Стили для изображений в тёмной теме */
+.country-image {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .country-image {
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для фильтров в тёмной теме */
+.dark .filters select {
+  background-color: #2e2e2e;
+  color: var(--text-color);
+  border: 1px solid #444;
+}
+
+/* Стили для FAQ в тёмной теме */
+.dark .faq details {
+  background-color: var(--card-bg);
+  border-left-color: var(--link-color);
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для кнопки переключения темы */
+.theme-button {
+  font-size: 1.2em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.theme-button:hover {
+  color: #e8f5e9;
+}
+
+.dark .theme-button {
+  color: #ccc;
+}
+
+.dark .theme-button:hover {
+  color: #f5f5f5;
+}
+
+/* Стили для иконок в тёмной теме */
+.fas {
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.dark .fas {
+  color: var(--link-color);
+}
+
+/* Стили для графиков в тёмной теме */
+.dark .chart-section {
+  background-color: var(--chart-bg);
+  color: var(--chart-color);
+}
+
+/* Стили для таблицы в тёмной теме */
+.dark table {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.dark th, .dark td {
+  background-color: var(--card-bg);
+  border: 1px solid #444;
+  color: var(--text-color);
+}
+
+/* Стили для графиков в тёмной теме */
+.dark .chart-section canvas {
+  background-color: var(--chart-bg);
+  color: var(--chart-color);
+}
+
+/* Стили для раздела "Ключевые факты" */
+.dark .key-facts li {
+  background-color: var(--card-bg);
+  border-left-color: var(--link-color);
+  color: var(--text-color);
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для флагов в таблице */
+.dark .country-flag-table {
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для флагов в карточках */
+.dark .country-card img.country-image {
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для графиков в тёмной теме */
+.dark .chart-section {
+  background-color: var(--chart-bg);
+  border-radius: var(--border-radius);
+  padding: 1em;
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для ссылок в тёмной теме */
+.dark .navigation a {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+}
+
+.dark .navigation a:hover {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+/* Стили для советов по здоровью */
+.dark .health-tips li {
+  background-color: var(--card-bg);
+  border-left-color: var(--link-color);
+  color: var(--text-color);
+  box-shadow: var(--shadow-dark);
+}
+
+.dark .health-tips li::before {
+  color: var(--link-color);
+}
+
+/* Стили для FAQ в тёмной теме */
+.dark .faq details {
+  background-color: var(--card-bg);
+  border-left-color: var(--link-color);
+  color: var(--text-color);
+  box-shadow: var(--shadow-dark);
+}
+
+.dark .faq summary {
+  color: var(--text-color);
+}
+
+/* Стили для главной секции */
+.dark .intro {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для флагов в таблице */
+.country-flag-table {
+  width: var(--flag-table-size);
+  height: auto;
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-bottom: 0.5em;
+  border-radius: 2px;
+  box-shadow: var(--shadow-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.country-flag-table:hover {
+  transform: scale(var(--flag-table-hover-scale));
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для карточек стран */
+.country-card {
+  background-color: var(--card-bg);
+  border-left: 4px solid var(--link-color);
+  padding: 1em;
+  margin-bottom: 1.5em;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.country-card:hover {
+  transform: scale(1.01);
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для флагов в карточках */
+.country-card img.country-image {
+  width: var(--flag-card-size);
+  height: auto;
+  border-radius: var(--border-radius);
+  margin-bottom: 1em;
+  box-shadow: var(--shadow-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.country-card img.country-image:hover {
+  transform: scale(var(--flag-card-hover-scale));
+  box-shadow: var(--shadow-dark);
+}
+
+.dark .country-card img.country-image {
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для таблицы рейтинга стран */
+#country-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+  box-shadow: var(--shadow-light);
+}
+
+#country-table, th, td {
+  border: 1px solid #ccc;
+}
+
+th, td {
+  padding: 0.8em;
+  text-align: left;
+}
+
+th {
+  background-color: #e0f2f1;
+  transition: background-color 0.3s ease;
+}
+
+.dark #country-table {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.dark th, .dark td {
+  border: 1px solid #444;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.dark th {
+  background-color: var(--card-bg);
+}
+
+/* Стили для фильтров */
+.filters {
+  margin-bottom: 1em;
+}
+
+.filters label {
+  margin-right: 1em;
+  font-weight: bold;
+}
+
+.filters select {
+  padding: 0.5em;
+  margin-right: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark .filters select {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid #444;
+}
+
+/* Стили для графиков */
+canvas {
+  margin-top: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.dark canvas {
+  background-color: var(--chart-bg);
+  color: var(--chart-color);
+}
+
+/* Статистика и источники */
+.chart-section {
+  margin-top: 2em;
+}
+
+.sources ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sources li {
+  margin-bottom: 0.5em;
+}
+
+.sources a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.sources a:hover {
+  text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  main {
+    padding: 1em;
+  }
+
+  nav a {
+    display: block;
+    margin: 0.5em 0;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  .filters label {
+    margin-right: 0;
+    margin-bottom: 0.5em;
+  }
+
+  /* Адаптивные флаги */
+  .country-flag-table {
+    width: 15px;
+    height: auto;
+  }
+
+  .country-card img.country-image {
+    width: 80px;
+    height: auto;
+  }
+
+  .country-card {
+    margin-bottom: 1.2em;
+    padding: 0.8em;
+  }
+
+  .country-card:hover {
+    transform: scale(1.01);
+  }
+
+  .country-card img.country-image:hover {
+    transform: scale(1.05);
+  }
+
+  .country-flag-table:hover {
+    transform: scale(1.05);
+  }
+
+  .legend {
+    max-width: 150px;
+  }
+
+  .legend-item span {
+    width: 15px;
+    height: 8px;
+  }
+
+  .health-tips li::before {
+    margin-right: 8px;
+  }
+
+  .health-tips li {
+    padding: 0.6em;
+  }
+}
+
+/* Стили для кнопки переключения темы */
+.theme-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.theme-button:hover {
+  color: #e8f5e9;
+}
+
+.dark .theme-button {
+  color: #ccc;
+}
+
+.dark .theme-button:hover {
+  color: #f5f5f5;
+}
+
+/* Стили для иконок в тёмной теме */
+.dark .fas {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+}
+
+.dark .fas:hover {
+  color: var(--link-color);
+}
+
+/* Стили для графиков в тёмной теме */
+.dark .chart-section {
+  background-color: var(--chart-bg);
+  color: var(--chart-color);
+  border-radius: var(--border-radius);
+  padding: 1em;
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для таблицы в тёмной теме */
+.dark #country-table {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.dark th, .dark td {
+  border: 1px solid #444;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.dark th {
+  background-color: var(--card-bg);
+}
+
+/* Стили для графиков в тёмной теме */
+.dark .chart-section canvas {
+  background-color: var(--chart-bg);
+  color: var(--chart-color);
+}
+
+/* Стили для ключевых фактов в тёмной теме */
+.dark .key-facts li {
+  background-color: var(--card-bg);
+  border-left-color: var(--link-color);
+  color: var(--text-color);
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для флагов в таблице */
+.dark .country-flag-table {
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для флагов в карточках */
+.dark .country-card img.country-image {
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для графиков в тёмной теме */
+.dark .chart-section {
+  background-color: var(--chart-bg);
+  color: var(--chart-color);
+}
+
+/* Стили для ссылок в тёмной теме */
+.dark .navigation a {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+}
+
+.dark .navigation a:hover {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+/* Стили для советов по здоровью */
+.dark .health-tips li {
+  background-color: var(--card-bg);
+  border-left-color: var(--link-color);
+  color: var(--text-color);
+  box-shadow: var(--shadow-dark);
+}
+
+.dark .health-tips li::before {
+  color: var(--link-color);
+}
+
+/* Стили для FAQ в тёмной теме */
+.dark .faq details {
+  background-color: var(--card-bg);
+  border-left-color: var(--link-color);
+  color: var(--text-color);
+  box-shadow: var(--shadow-dark);
+}
+
+.dark .faq summary {
+  color: var(--text-color);
+}
+
+/* Стили для главной секции */
+.dark .intro {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для флагов в таблице */
+.country-flag-table {
+  width: var(--flag-table-size);
+  height: auto;
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-bottom: 0.5em;
+  border-radius: 2px;
+  box-shadow: var(--shadow-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.country-flag-table:hover {
+  transform: scale(var(--flag-table-hover-scale));
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для карточек стран */
+.country-card {
+  background-color: var(--card-bg);
+  border-left: 4px solid var(--link-color);
+  padding: 1em;
+  margin-bottom: 1.5em;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.country-card:hover {
+  transform: scale(1.01);
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для флагов в карточках */
+.country-card img.country-image {
+  width: var(--flag-card-size);
+  height: auto;
+  border-radius: var(--border-radius);
+  margin-bottom: 1em;
+  box-shadow: var(--shadow-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.country-card img.country-image:hover {
+  transform: scale(var(--flag-card-hover-scale));
+  box-shadow: var(--shadow-dark);
+}
+
+.dark .country-card img.country-image {
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для таблицы рейтинга */
+#country-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+  box-shadow: var(--shadow-light);
+}
+
+#country-table, th, td {
+  border: 1px solid #ccc;
+}
+
+th, td {
+  padding: 0.8em;
+  text-align: left;
+}
+
+th {
+  background-color: #e0f2f1;
+  transition: background-color 0.3s ease;
+}
+
+.dark #country-table {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.dark th, .dark td {
+  border: 1px solid #444;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.dark th {
+  background-color: var(--card-bg);
+}
+
+/* Стили для фильтров */
+.filters {
+  margin-bottom: 1em;
+}
+
+.filters label {
+  margin-right: 1em;
+  font-weight: bold;
+}
+
+.filters select {
+  padding: 0.5em;
+  margin-right: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark .filters select {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid #444;
+}
+
+/* Стили для графиков */
+canvas {
+  margin-top: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.dark canvas {
+  background-color: var(--chart-bg);
+  color: var(--chart-color);
+}
+
+/* Стили для статистики и источников */
+.chart-section {
+  margin-top: 2em;
+}
+
+.sources ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sources li {
+  margin-bottom: 0.5em;
+}
+
+.sources a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.sources a:hover {
+  text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  main {
+    padding: 1em;
+  }
+
+  nav a {
+    display: block;
+    margin: 0.5em 0;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  .filters label {
+    margin-right: 0;
+    margin-bottom: 0.5em;
+  }
+
+  /* Адаптивные флаги */
+  .country-flag-table {
+    width: 15px;
+    height: auto;
+  }
+
+  .country-card img.country-image {
+    width: 80px;
+    height: auto;
+  }
+
+  .country-card {
+    margin-bottom: 1.2em;
+    padding: 0.8em;
+  }
+
+  .country-card:hover {
+    transform: scale(1.01);
+  }
+
+  .country-card img.country-image:hover {
+    transform: scale(var(--flag-card-hover-scale));
+  }
+
+  .country-flag-table:hover {
+    transform: scale(var(--flag-table-hover-scale));
+  }
+
+  .legend {
+    max-width: 150px;
+  }
+
+  .legend-item span {
+    width: 15px;
+    height: 8px;
+  }
+
+  .health-tips li::before {
+    margin-right: 8px;
+  }
+
+  .health-tips li {
+    padding: 0.6em;
+  }
+}
+
+/* Стили для кнопки переключения темы */
+.theme-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.theme-button:hover {
+  color: #e8f5e9;
+}
+
+.dark .theme-button {
+  color: #ccc;
+}
+
+.dark .theme-button:hover {
+  color: #f5f5f5;
+}
+
+/* Стили для иконок в тёмной теме */
+.dark .fas {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+}
+
+.dark .fas:hover {
+  color: var(--link-color);
+}
+
+/* Стили для графиков в тёмной теме */
+.dark .chart-section {
+  background-color: var(--chart-bg);
+  color: var(--chart-color);
+  border-radius: var(--border-radius);
+  padding: 1em;
+  box-shadow: var(--shadow-dark);
+}
+
+/* Стили для таблицы рейтинга */
+.dark #country-table {
+  background-color: var(--card-bg
