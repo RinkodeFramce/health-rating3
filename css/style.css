@@ -1,123 +1,277 @@
+/* Общие стили */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f8ff;
-    color: #333;
-  }
-  
-  header {
-    background-color: #4CAF50;
-    padding: 1em;
-    text-align: center;
-    color: white;
-  }
-  
-  nav a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f8ff;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #4CAF50;
+  padding: 1.5em;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+  color: white;
+  margin: 0 1em;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #e8f5e9;
+}
+
+main {
+  flex: 1 0 auto;
+  padding: 2em;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 1em;
+  position: relative;
+  width: 100%;
+}
+
+/* Ключевые факты */
+.key-facts ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.key-facts li {
+  margin-bottom: 0.5em;
+  background-color: #e0f2f1;
+  padding: 0.5em 1em;
+  border-left: 4px solid #4CAF50;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Карточки стран */
+.country-card {
+  background-color: #e8f5e9;
+  border-left: 4px solid #4CAF50;
+  padding: 1em;
+  margin-bottom: 1.5em;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.country-card h3 {
+  color: #2e7d32;
+  margin-top: 0;
+}
+
+.country-card:hover {
+  transform: scale(1.01);
+}
+
+/* Флаги стран */
+.country-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Советы по здоровью */
+.health-tips ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.health-tips li::before {
+  content: "✅";
+  margin-right: 10px;
+}
+
+.health-tips li {
+  background: #fff;
+  padding: 0.8em;
+  margin-bottom: 0.5em;
+  border-left: 4px solid #4CAF50;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* FAQ */
+.faq {
+  margin-top: 2em;
+}
+
+.faq h2 {
+  margin-bottom: 1em;
+}
+
+.faq details {
+  background: #fff;
+  padding: 1em;
+  margin-bottom: 0.5em;
+  border-left: 4px solid #4CAF50;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.faq summary {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Навигация */
+.navigation ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.navigation li {
+  margin-bottom: 0.5em;
+}
+
+.navigation a {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navigation a:hover {
+  text-decoration: underline;
+}
+
+/* Стили для карты */
+#disease-map {
+  height: 500px;
+  margin-top: 1em;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.legend {
+  background: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 1em;
+  max-width: 200px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.legend-item span {
+  display: inline-block;
+  width: 20px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 2px;
+}
+
+/* Таблица */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+table, th, td {
+  border: 1px solid #ccc;
+}
+
+th, td {
+  padding: 0.8em;
+  text-align: left;
+}
+
+th {
+  background-color: #e0f2f1;
+}
+
+/* Фильтры */
+.filters {
+  margin-bottom: 1em;
+}
+
+.filters label {
+  margin-right: 1em;
+  font-weight: bold;
+}
+
+.filters select {
+  padding: 0.5em;
+  margin-right: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Графики */
+canvas {
+  margin-top: 1em;
+}
+
+/* Статистика и источники */
+.chart-section {
+  margin-top: 2em;
+}
+
+.sources ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sources li {
+  margin-bottom: 0.5em;
+}
+
+.sources a {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.sources a:hover {
+  text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
   main {
-    padding: 2em;
-  }
-  
-  /* Иконки */
-  nav i {
-    margin-right: 5px;
-  }
-  
-  /* Таблица */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1em;
-  }
-  
-  table, th, td {
-    border: 1px solid #ccc;
-  }
-  
-  th, td {
-    padding: 0.8em;
-    text-align: left;
-  }
-  
-  /* Фильтр */
-  label, select {
-    margin-bottom: 1em;
-    display: inline-block;
-  }
-  
-  /* Карточки стран */
-  .country-card {
-    background-color: #e8f5e9;
-    border-left: 4px solid #4CAF50;
     padding: 1em;
-    margin-bottom: 1.5em;
-    border-radius: 5px;
   }
-  
-  .country-card h3 {
-    color: #2e7d32;
+
+  nav a {
+    display: block;
+    margin: 0.5em 0;
   }
-  
-  /* Карта заболеваемости */
-  .map-placeholder {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 1em;
-    margin-top: 1em;
-    text-align: center;
-    font-style: italic;
-    color: #666;
+
+  .filters {
+    flex-direction: column;
   }
-  
-  /* Советы по здоровью */
-  .health-tips ul {
-    list-style: none;
-    padding-left: 0;
+
+  .filters label {
+    margin-right: 0;
+    margin-bottom: 0.5em;
   }
-  
-  .health-tips li::before {
-    content: "✅";
-    margin-right: 0.5em;
-  }
-  
-  /* FAQ */
-  details {
-    margin-bottom: 1em;
-    padding: 0.5em;
-    background-color: #e8f5e9;
-    border-left: 4px solid #4CAF50;
-    border-radius: 5px;
-  }
-  
-  summary {
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  /* Навигационные ссылки */
-  .navigation a {
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .navigation a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Футер */
-  footer {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 1em;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
+}

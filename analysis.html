@@ -2,18 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Почему в некоторых странах болезней меньше? Изучите факторы, влияющие на здоровье населения.">
   <title>Почему в некоторых странах болезней меньше? | Факторы здоровья</title>
   <link rel="stylesheet" href="css/style.css">
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <header>
     <h1>Почему в некоторых странах болезней меньше?</h1>
     <nav>
-      <a href="index.html"><i class="fas fa-home"></i> Главная</a>
-      <a href="countries.html"><i class="fas fa-globe"></i> Рейтинг стран</a>
-      <a href="analysis.html"><i class="fas fa-chart-line"></i> Анализ данных</a>
+      <a href="index.html">Главная</a>
+      <a href="countries.html">Рейтинг стран</a>
+      <a href="analysis.html">Анализ данных</a>
     </nav>
   </header>
 
@@ -25,6 +27,12 @@
         <li><strong>Образование:</strong> Грамотное население чаще проходит профилактические осмотры.</li>
         <li><strong>Экология:</strong> Чистый воздух и вода снижают риски заболеваний.</li>
         <li><strong>Система здравоохранения:</strong> Государственные программы и доступность вакцин.</li>
+        <li><strong>Культура:</strong> В Японии и Южной Корее здоровый образ жизни — часть культуры.</li>
+        <li><strong>Технологии:</strong> Цифровизация услуг (электронные записи, телемедицина) улучшает доступ к врачам.</li>
+        <li><strong>Питание:</strong> В странах с рационом, богатым овощами и рыбой, уровень заболеваний ниже.</li>
+        <li><strong>Государственные инвестиции:</strong> Страны, вкладывающие в здравоохранение, видят улучшение показателей.</li>
+        <li><strong>Профилактика:</strong> Регулярные осмотры и вакцинация — ключевые инструменты снижения заболеваемости.</li>
+        <li><strong>Борьба с эпидемиями:</strong> Страны с быстрой реакцией на вспышки болезней имеют лучшие рейтинги.</li>
       </ul>
 
       <!-- Примеры улучшения -->
@@ -37,10 +45,10 @@
         <h4>Таиланд</h4>
         <p>Увеличение бюджета на здравоохранение в 3 раза за 10 лет привело к снижению детской смертности на 60%.</p>
       </div>
-
-      <!-- График роста рейтинга -->
-      <h3>Рост рейтинга за 10 лет</h3>
-      <canvas id="improvementChart" width="400" height="200"></canvas>
+      <div class="country-improvement">
+        <h4>Япония</h4>
+        <p>Культура профилактических осмотров и здорового питания — основные причины высокой продолжительности жизни.</p>
+      </div>
     </section>
 
     <!-- Источники данных -->
@@ -50,7 +58,18 @@
         <li><a href="https://www.who.int/">Всемирная организация здравоохранения (ВОЗ)</a></li>
         <li><a href="https://data.worldbank.org/">World Bank Open Data</a></li>
         <li><a href="https://ourworldindata.org/">Our World in Data</a></li>
+        <li><a href="https://www.cdc.gov/">Centers for Disease Control and Prevention (CDC)</a></li>
+        <li><a href="https://www.who.int/data/gho">Global Health Observatory (GHO) — ВОЗ</a></li>
+        <li><a href="https://www.oecd-ilibrary.org/social-issues-migration-health">OECD Health Statistics</a></li>
+        <li><a href="https://www.healthdata.gov/">HealthData.gov — открытые данные США</a></li>
+        <li><a href="https://www.euro.who.int/">Европейское региональное бюро ВОЗ</a></li>
       </ul>
+    </section>
+
+    <!-- График роста рейтинга -->
+    <section class="chart-section">
+      <h2>Рост рейтинга за 20 лет</h2>
+      <canvas id="improvementChart" width="400" height="200"></canvas>
     </section>
   </main>
 
