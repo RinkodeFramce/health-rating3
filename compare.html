@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Сравните уровень здоровья и медицины в двух странах. Графики, таблицы и данные от ВОЗ и World Bank.">
+  <title>Сравнение стран | Глобальный рейтинг медицины</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Сравнение стран</h1>
+    <nav>
+      <a href="index.html"><i class="fas fa-home"></i> Главная</a>
+      <a href="countries.html"><i class="fas fa-globe"></i> Рейтинг стран</a>
+      <a href="analysis.html"><i class="fas fa-chart-line"></i> Анализ данных</a>
+      <a href="compare.html"><i class="fas fa-balance-scale"></i> Сравнение</a>
+      <a href="creator.html"><i class="fas fa-user"></i> Создатель</a>
+      <button id="theme-toggle" class="theme-button">
+        <i class="fas fa-moon"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="compare-section">
+      <h2>Выберите две страны для сравнения</h2>
+      <div class="compare-form">
+        <label for="country1">Страна 1:</label>
+        <select id="country1">
+          <option value="">Выберите страну</option>
+        </select>
+
+        <label for="country2">Страна 2:</label>
+        <select id="country2">
+          <option value="">Выберите страну</option>
+        </select>
+      </div>
+
+      <div class="compare-results">
+        <h3>Результаты сравнения</h3>
+        <div id="compare-table-container"></div>
+        <canvas id="compareChart" width="400" height="200"></canvas>
+        <div id="compare-details"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Здоровье и медицина</p>
+  </footer>
+
+  <!-- Подключение данных -->
+  <script src="js/data.js"></script>
+  <!-- Скрипт для темы -->
+  <script src="js/theme.js"></script>
+  <!-- Скрипт сравнения -->
+  <script>
+    const country1Select = document.getElementById('country1');
+    const country2Select = document.getElementById('country2');
+    const compareDetails = document.getElementById('compare-details');
+    const compareTableContainer = document.getElementById('compare-table-container');
+    const compareChartCanvas = document.getElementById('compareChart');
+    let compareChart;
+
+    // Заполнение выпадающих списков
+    function populateCountrySelect(selectElement, exclude = '') {
+      selectElement.innerHTML = '<option value="">Выберите страну</option>';
+      countryData.forEach(country => {
+        if (country.country !== exclude) {
+          const option = document.createElement('option');
+          option.value = country.country;
+          option.textContent = country.country;
+          selectElement.appendChild(option);
+        }
+      });
+    }
+
+    // При загрузке страницы
+    document.addEventListener("DOMContentLoaded", () => {
+      populateCountrySelect(country1Select);
+      populateCountrySelect(country2Select);
+    });
+
+    // При выборе страны
+    function updateComparison() {
+      const country1Name = country1Select.value;
+      const country2Name = country2Select.value;
+
+      if (!country1Name || !country2Name) {
+        compareDetails.innerHTML = "<p>Выберите обе страны для сравнения</p>";
+        compareTableContainer.innerHTML = "";
+        if (compareChart) compareChart.destroy();
+        return;
+      }
+
+      const country1 = countryData.find(c => c.country === country1Name);
+      const country2 = countryData.find(c => c.country === country2Name);
+
+      // Таблица сравнения
+      compareTableContainer.innerHTML = `
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Показатель</th>
+              <th>${country1Name}</th>
+              <th>${country2Name}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Регион</td><td>${country1.region}</td><td>${country2.region}</td></tr>
+            <tr><td>Доход</td><td>${country1.income}</td><td>${country2.income}</td></tr>
+            <tr><td>Рейтинг (1-100)</td><td>${country1.healthcare}</td><td>${country2.healthcare}</td></tr>
+            <tr><td>Заболеваемость</td><td>${country1.diseaseRate}</td><td>${country2.diseaseRate}</td></tr>
+            <tr><td>Продолжительность жизни</td><td>${country1.lifeExpectancy}</td><td>${country2.lifeExpectancy}</td></tr>
+            <tr><td>Расходы на здравоохранение ($)</td><td>${country1.healthSpending}</td><td>${country2.healthSpending}</td></tr>
+            <tr><td>Флаг</td>
+              <td><img src="${country1.flag}" alt="Флаг ${country1Name}" class="country-flag-table"> ${country1Name}</td>
+              <td><img src="${country2.flag}" alt="Флаг ${country2Name}" class="country-flag-table"> ${country2Name}</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+
+      // График сравнения
+      if (compareChart) compareChart.destroy();
+
+      compareChart = new Chart(compareChartCanvas, {
+        type: 'bar',
+        data: {
+          labels: ['Рейтинг', 'Заболеваемость', 'Продолжительность жизни', 'Расходы'],
+          datasets: [
+            {
+              label: country1Name,
+              data: [
+                country1.healthcare,
+                country1.diseaseRate,
+                country1.lifeExpectancy.replace(' года', ''),
+                country1.healthSpending.replace('$', '')
+              ],
+              backgroundColor: '#4CAF50'
+            },
+            {
+              label: country2Name,
+              data: [
+                country2.healthcare,
+                country2.diseaseRate,
+                country2.lifeExpectancy.replace(' года', ''),
+                country2.healthSpending.replace('$', '')
+              ],
+              backgroundColor: '#2196F3'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: 'top' },
+            title: { display: true, text: 'Сравнение стран' }
+          },
+          scales: {
+            y: { beginAtZero: true }
+          }
+        }
+      });
+
+      // Подробности
+      compareDetails.innerHTML = `
+        <h4>Причины различий</h4>
+        <ul>
+          <li><strong>${country1Name}:</strong> ${country1.reason}</li>
+          <li><strong>${country2Name}:</strong> ${country2.reason}</li>
+        </ul>
+      `;
+    }
+
+    // Обработчики событий
+    country1Select.addEventListener('change', updateComparison);
+    country2Select.addEventListener('change', updateComparison);
+  </script>
+</body>
+</html>

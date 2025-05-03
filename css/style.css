@@ -290,6 +290,210 @@ footer {
   margin-right: 10px;
   border-radius: 2px;
 }
+.fade-out {
+  animation: fadeOut 0.5s ease;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* Секция с фото и описанием */
+.creator-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2em;
+  margin-top: 1em;
+}
+
+.creator-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.creator-photo:hover {
+  transform: scale(1.05);
+}
+
+/* Путь разработчика */
+.creator-journey ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.creator-journey li {
+  margin-bottom: 0.5em;
+  background-color: var(--card-bg);
+  padding: 0.8em;
+  border-left: 4px solid var(--link-color);
+  border-radius: 4px;
+  box-shadow: var(--shadow-light);
+}
+
+/* Используемые технологии */
+.technologies .tech-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.technologies .tech-list li {
+  background-color: var(--card-bg);
+  padding: 0.6em 1em;
+  border-radius: 4px;
+  box-shadow: var(--shadow-light);
+  transition: transform 0.3s ease;
+}
+
+.technologies .tech-list li:hover {
+  transform: scale(1.05);
+}
+
+.technologies i {
+  margin-right: 0.5em;
+}
+
+/* Благодарности */
+.thanks ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.thanks li {
+  margin-bottom: 0.5em;
+  background-color: var(--card-bg);
+  padding: 0.8em;
+  border-left: 4px solid var(--link-color);
+  border-radius: 4px;
+  box-shadow: var(--shadow-light);
+}
+
+/* Контакты */
+.contact .social-links {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1em;
+}
+
+.contact .social-links li {
+  margin-bottom: 0.5em;
+}
+
+.contact .social-links a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact .social-links a:hover {
+  color: #e8f5e9;
+}
+
+/* Иконки соцсетей */
+.contact .social-links i {
+  margin-right: 0.5em;
+}
+/* Секция сравнения */
+.compare-section {
+  margin-top: 2em;
+}
+
+.compare-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-bottom: 2em;
+}
+
+.compare-form label {
+  font-weight: bold;
+}
+
+.compare-form select {
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Таблица сравнения */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2em;
+  box-shadow: var(--shadow-light);
+}
+
+.compare-table, .compare-table th, .compare-table td {
+  border: 1px solid #ccc;
+  padding: 0.8em;
+  text-align: left;
+}
+
+.compare-table th {
+  background-color: #e0f2f1;
+}
+
+.dark .compare-table {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.dark .compare-table th, .dark .compare-table td {
+  border: 1px solid #444;
+  color: var(--text-color);
+}
+
+.dark .compare-table th {
+  background-color: var(--card-bg);
+}
+
+/* График сравнения */
+#compareChart {
+  margin-top: 2em;
+  max-width: 100%;
+}
+
+/* Подробности сравнения */
+.compare-results {
+  margin-top: 2em;
+}
+
+.compare-results h3 {
+  margin-bottom: 1em;
+}
+
+.compare-results ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.compare-results li {
+  margin-bottom: 0.5em;
+  background-color: var(--card-bg);
+  padding: 0.6em 1em;
+  border-left: 4px solid var(--link-color);
+  border-radius: 4px;
+  box-shadow: var(--shadow-light);
+}
+
+.dark .compare-results li {
+  box-shadow: var(--shadow-dark);
+}
 
 /* Таблица рейтинга стран */
 table {
@@ -1407,4 +1611,5 @@ canvas {
 
 /* Стили для таблицы рейтинга */
 .dark #country-table {
-  background-color: var(--card-bg
+  background-color: var(--card-bg)
+}

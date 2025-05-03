@@ -129,6 +129,96 @@ document.addEventListener("DOMContentLoaded", () => {
     // Очистка графиков
     if (healthChart) healthChart.destroy();
     if (diseaseChart) diseaseChart.destroy();
+    const countryData = [
+      {
+        country: "Швейцария",
+        region: "Европа",
+        income: "Высокий",
+        healthcare: 98,
+        diseaseRate: 120,
+        lifeExpectancy: "83 года",
+        healthSpending: "$7000",
+        reason: "Высокий уровень жизни, обязательное страхование",
+        flag: "images/switzerland-flag.svg"
+      },
+      {
+        country: "Нигерия",
+        region: "Африка",
+        income: "Низкий",
+        healthcare: 45,
+        diseaseRate: 400,
+        lifeExpectancy: "55 лет",
+        healthSpending: "$100",
+        reason: "Низкий ВВП, дефицит медперсонала",
+        flag: "images/nigeria-flag.svg"
+      },
+      {
+        country: "Япония",
+        region: "Азия",
+        income: "Высокий",
+        healthcare: 94,
+        diseaseRate: 160,
+        lifeExpectancy: "84 года",
+        healthSpending: "$5000",
+        reason: "Здоровое питание, культура профилактических осмотров",
+        flag: "images/japan-flag.svg"
+      },
+      {
+        country: "Южная Корея",
+        region: "Азия",
+        income: "Средний",
+        healthcare: 92,
+        diseaseRate: 180,
+        lifeExpectancy: "83 года",
+        healthSpending: "$4500",
+        reason: "Цифровизация услуг, государственные программы",
+        flag: "images/south-korea-flag.svg"
+      },
+      {
+        country: "Таиланд",
+        region: "Азия",
+        income: "Средний",
+        healthcare: 75,
+        diseaseRate: 200,
+        lifeExpectancy: "75 лет",
+        healthSpending: "$1200",
+        reason: "Увеличение бюджета на здравоохранение",
+        flag: "images/thailand-flag.svg"
+      },
+      {
+        country: "Россия",
+        region: "Европа",
+        income: "Средний",
+        healthcare: 70,
+        diseaseRate: 250,
+        lifeExpectancy: "73 года",
+        healthSpending: "$1800",
+        reason: "Улучшение системы здравоохранения за последние 10 лет",
+        flag: "images/russia-flag.svg"
+      },
+      {
+        country: "Индия",
+        region: "Азия",
+        income: "Низкий",
+        healthcare: 60,
+        diseaseRate: 300,
+        lifeExpectancy: "69 лет",
+        healthSpending: "$200",
+        reason: "Перенаселение, слабая инфраструктура",
+        flag: "images/india-flag.svg"
+      },
+      {
+        country: "Канада",
+        region: "Северная Америка",
+        income: "Высокий",
+        healthcare: 90,
+        diseaseRate: 180,
+        lifeExpectancy: "82 года",
+        healthSpending: "$6000",
+        reason: "Универсальная система здравоохранения",
+        flag: "images/canada-flag.svg"
+      }
+    ];
 
     // График рейтинга
     healthChart = new Chart(healthChartCanvas, {
