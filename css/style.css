@@ -92,6 +92,23 @@ footer {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Стили для флагов в таблице */
+.country-flag-table {
+  width: 20px;          /* Ширина флага */
+  height: auto;        /* Сохраняет пропорции */
+  vertical-align: middle;
+  margin-right: 5px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .country-flag-table {
+    width: 15px;
+  }
+}
+
 /* Советы по здоровью */
 .health-tips ul {
   list-style: none;
